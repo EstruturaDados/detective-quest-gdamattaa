@@ -302,20 +302,41 @@ int main() {
     printf("\n=== Pistas Coletadas ===\n");
     exibirPistas(pistas);
 
-    char acusado[50];
-    printf("\nDigite o nome do suspeito: ");
-    scanf("%s", acusado);
+// === ACUSAÇÃO FINAL ===
+char acusado[50];
+int escolha;
 
-    int contador = 0;
-    verificarSuspeitoFinal(pistas, acusado, &contador);
+printf("\n=== SUSPEITOS DISPONÍVEIS ===\n");
+printf("1 - Carlos\n");
+printf("2 - Ana\n");
+printf("3 - Marina\n");
 
-    if (contador >= 2)
-        printf("\nAcusação correta! Evidências suficientes contra %s.\n", acusado);
-    else
-        printf("\nEvidências insuficientes contra %s.\n", acusado);
+printf("\nEscolha o número do suspeito: ");
+scanf("%d", &escolha);
 
-    liberarMapa(hall);
-    liberarBST(pistas);
+switch (escolha) {
+    case 1:
+        strcpy(acusado, "Carlos");
+        break;
+    case 2:
+        strcpy(acusado, "Ana");
+        break;
+    case 3:
+        strcpy(acusado, "Marina");
+        break;
+    default:
+        printf("Opção inválida!\n");
+        return 0;
+}
 
-    return 0;
+printf("\nVocê acusou: %s\n", acusado);
+
+// Aqui continua sua lógica de verificação
+    if (strcmp(acusado, "Carlos") == 0) {
+     printf("Carlos é o culpado!\n");
+    } else {
+     printf("%s é inocente!\n", acusado);
+    }
+
+return 0;
 }
